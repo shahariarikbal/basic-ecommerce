@@ -18,6 +18,7 @@ class BrandController extends Controller
 
     public function getBrands()
     {
-        return Brand::with('products', 'category')->get();
+        $brands = Brand::with('products', 'category')->latest()->get();
+        return response()->json($brands);
     }
 }

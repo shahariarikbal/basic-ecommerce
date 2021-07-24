@@ -15,11 +15,44 @@
     <title>E-commerce</title>
 </head>
 <body>
-<div class="super_container" id="app">
+<div class="super_container">
     <!-- Header -->
-    <top-bar></top-bar>
-    <div style="height: auto; background-color: #eee">
-        <product-list></product-list>
+    <div style="height: auto; background-color: #eee" id="app">
+
+    </div>
+    <div class="col-md-12" style="background-color: #1b1e21; height: 400px;">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-4" style="margin-top: 40px;">
+                    <h3 style="color: white">About company</h3>
+                    <p style="text-align: justify">
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                        when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                        It has survived not only five centuries, but also the leap into electronic typesetting,
+                        remaining essentially unchanged. It was popularised in the 1960s with the release of
+                        Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing
+                        software like Aldus PageMaker including versions of Lorem Ipsum.
+                    </p>
+                </div>
+                <div class="col-md-4" style="margin-top: 40px;">
+                    <h3 style="color: white">Our services</h3>
+                    <a href="#" style="text-align: justify">
+                        <p>Home</p>
+                    </a>
+                    <a href="#" style="text-align: justify">
+                        <p>About us</p>
+                    </a>
+                    <a href="#" style="text-align: justify">
+                        <p>Service</p>
+                    </a>
+                </div>
+                <div class="col-md-4" style="margin-top: 40px;">
+                    <h3 style="color: white">Subscription</h3>
+                    <input type="text" class="form-control" placeholder="Subscription">
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->

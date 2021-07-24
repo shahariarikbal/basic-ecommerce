@@ -72,7 +72,7 @@
                                                                     <img :src="result.image" height="50" width="50" style="object-fit: cover">
                                                                 </div>
                                                                 <div class="col-md-8">{{ result.name }}</div>
-                                                                <div class="col-md-2">$ {{ result.price }}</div>
+                                                                <div class="col-md-2"> {{ result.price }} BDT</div>
                                                             </div>
                                                         </div>
                                                     </li>
@@ -137,72 +137,45 @@
                 </a>
             </div>
             <!--Slider End-->
-            <nav class="main_nav">
-                <div class="container">
-                    <div class="row">
-                        <div class="col">
-                            <div class="main_nav_content d-flex flex-row">
-                                <!-- Categories Menu -->
-                                <!-- Main Nav Menu -->
-                                <div class="main_nav_menu">
-                                    <ul class="standard_dropdown main_nav_dropdown">
-                                        <li><a href="#">Home<i class="fas fa-chevron-down"></i></a></li>
-                                        <li class="hassubs"> <a href="#">Laptop<i class="fas fa-chevron-down"></i></a>
-                                            <ul>
-                                                <li> <a href="#">Lenovo<i class="fas fa-chevron-down"></i></a>
-                                                    <ul>
-                                                        <li><a href="#">Lenovo 1<i class="fas fa-chevron-down"></i></a></li>
-                                                        <li><a href="#">Lenovo 3<i class="fas fa-chevron-down"></i></a></li>
-                                                        <li><a href="#">Lenovo 2<i class="fas fa-chevron-down"></i></a></li>
-                                                    </ul>
-                                                </li>
-                                                <li><a href="#">DELL<i class="fas fa-chevron-down"></i></a></li>
-                                                <li><a href="#">APPLE<i class="fas fa-chevron-down"></i></a></li>
-                                                <li><a href="#">HP<i class="fas fa-chevron-down"></i></a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="hassubs"> <a href="#">Featured Brands<i class="fas fa-chevron-down"></i></a>
-                                            <ul>
-                                                <li> <a href="#">APPLE<i class="fas fa-chevron-down"></i></a>
-                                                    <ul>
-                                                        <li><a href="#">Laptop<i class="fas fa-chevron-down"></i></a></li>
-                                                        <li><a href="#">Mobiles<i class="fas fa-chevron-down"></i></a></li>
-                                                        <li><a href="#">Ipads<i class="fas fa-chevron-down"></i></a></li>
-                                                    </ul>
-                                                </li>
-                                                <li><a href="#">Samsung<i class="fas fa-chevron-down"></i></a></li>
-                                                <li><a href="#">Lenovo<i class="fas fa-chevron-down"></i></a></li>
-                                                <li><a href="#">DELL<i class="fas fa-chevron-down"></i></a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="hassubs"> <a href="#">Pages<i class="fas fa-chevron-down"></i></a>
-                                            <ul>
-                                                <li><a href="shop.html">Shop<i class="fas fa-chevron-down"></i></a></li>
-                                                <li><a href="product.html">Product<i class="fas fa-chevron-down"></i></a></li>
-                                                <li><a href="blog.html">Blog<i class="fas fa-chevron-down"></i></a></li>
-                                                <li><a href="blog_single.html">Blog Post<i class="fas fa-chevron-down"></i></a></li>
-                                                <li><a href="regular.html">Regular Post<i class="fas fa-chevron-down"></i></a></li>
-                                                <li><a href="cart.html">Cart<i class="fas fa-chevron-down"></i></a></li>
-                                                <li><a href="contact.html">Contact<i class="fas fa-chevron-down"></i></a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="blog.html">Blog<i class="fas fa-chevron-down"></i></a></li>
-                                        <li><a href="contact.html">Contact<i class="fas fa-chevron-down"></i></a></li>
-                                    </ul>
-                                </div> <!-- Menu Trigger -->
-                                <div class="menu_trigger_container ml-auto">
-                                    <div class="menu_trigger d-flex flex-row align-items-center justify-content-end">
-                                        <div class="menu_burger">
-                                            <div class="menu_trigger_text">menu</div>
-                                            <div class="cat_burger menu_burger_inner"><span></span><span></span><span></span></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </nav> <!-- Menu -->
+<!--            <nav class="main_nav">-->
+<!--                <div class="container">-->
+<!--                    <div class="col-md-12">-->
+<!--                        <div class="row">-->
+<!--                            <div class="col-md-4"></div>-->
+<!--                            <div class="col-md-6">-->
+<!--                                <div class="main_nav_content d-flex flex-row">-->
+<!--                                    &lt;!&ndash; Main Nav Menu &ndash;&gt;-->
+<!--                                    <div class="main_nav_menu">-->
+<!--                                        <ul class="standard_dropdown main_nav_dropdown">-->
+<!--                                            <li><router-link to="/"><span class="menu-font-style">Home</span></router-link></li>-->
+<!--                                            <li class="hassubs"> <span class="menu-font-style">Categories<i class="fas fa-chevron-down"></i></span>-->
+<!--                                                <ul>-->
+<!--                                                    <li v-for="category in getAllCategories" :key="category.id">-->
+<!--                                                        <router-link :to="{name:'getAllCategoryProducts', params: {id: category.id}}">{{ category.name }}<i class="fas fa-chevron-down"></i></router-link>-->
+<!--                                                    </li>-->
+<!--                                                </ul>-->
+<!--                                            </li>-->
+<!--                                            <li class="hassubs"> <span class="menu-font-style">Brands<i class="fas fa-chevron-down"></i></span>-->
+<!--                                                <ul>-->
+<!--                                                    <li><a href="shop.html">Shop<i class="fas fa-chevron-down"></i></a></li>-->
+<!--                                                    <li><a href="product.html">Product<i class="fas fa-chevron-down"></i></a></li>-->
+<!--                                                    <li><a href="blog.html">Blog<i class="fas fa-chevron-down"></i></a></li>-->
+<!--                                                    <li><a href="blog_single.html">Blog Post<i class="fas fa-chevron-down"></i></a></li>-->
+<!--                                                    <li><a href="regular.html">Regular Post<i class="fas fa-chevron-down"></i></a></li>-->
+<!--                                                    <li><a href="cart.html">Cart<i class="fas fa-chevron-down"></i></a></li>-->
+<!--                                                    <li><a href="contact.html">Contact<i class="fas fa-chevron-down"></i></a></li>-->
+<!--                                                </ul>-->
+<!--                                            </li>-->
+<!--                                            <li><span class="menu-font-style">Contact</span></li>-->
+<!--                                        </ul>-->
+<!--                                    </div> &lt;!&ndash; Menu Trigger &ndash;&gt;-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div class="col-md-2"></div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </nav> &lt;!&ndash; Menu &ndash;&gt;-->
             <div class="page_menu">
                 <div class="container">
                     <div class="row">
@@ -272,6 +245,7 @@
                 </div>
             </div>
         </header>
+        <router-view></router-view>
     </div>
 </template>
 
@@ -288,7 +262,7 @@ export default {
     watch: {
         search(after, before) {
             //console.log(after)
-            axios.get('/get/search/product/', { params: { search: this.search } })
+            axios.get('api/get/search/product/', { params: { search: this.search } })
                 .then(response => {
                     if(this.search.length > 0){
                         this.isOpen = true
@@ -303,7 +277,16 @@ export default {
         }
     },
     mounted() {
-
+        // this.$store.dispatch("getCategoriesFormDatabase")
+        // this.$store.dispatch("getBrandsFormDatabase")
+    },
+    computed: {
+        // getAllCategories(){ //final output from here
+        //     return this.$store.getters.getCategoriesFormGetters
+        // },
+        // getAllBrands(){ //final output from here
+        //     return this.$store.getters.getBrandsFormGetters
+        // }
     },
     methods : {
 
@@ -334,5 +317,8 @@ export default {
 .autocomplete-result:hover {
     background-color: deepskyblue;
     color: black;
+}
+.menu-font-style{
+    cursor: pointer; font-size: 18px; color: deepskyblue; font-weight: normal;
 }
 </style>

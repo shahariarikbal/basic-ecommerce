@@ -18,7 +18,9 @@ class CategoryController extends Controller
 
     public function getCategory()
     {
-        return Category::get();
+        $categories = Category::latest()->get();
+
+        return response()->json($categories);
     }
 
     public function filtaringProduct($id)

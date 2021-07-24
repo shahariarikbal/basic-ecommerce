@@ -25,7 +25,14 @@ class ProductController extends Controller
 
     public function getProducts()
     {
-        return Product::with('category', 'brand')->paginate(8);
+        $products = Product::with('category', 'brand')->latest()->paginate(8);
+        return response()->json($products);
+    }
+
+    public function getCategoryProductsById($id)
+    {
+        //dd($id);
+        return Product::with('category', 'brand')->where('cat_id', $id)->get();
     }
 
     public function getSearchProducts(Request $request)

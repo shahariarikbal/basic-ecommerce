@@ -1,11 +1,11 @@
 <template>
     <div>
-        <div class="col-lg-12" style="margin-bottom: 50px;">
+        <div class="col-lg-12">
             <div class="row">
                 <div class="col-md-3">
                     <div class="card">
                         <div class="card-header nav_bg_color">
-                            <span class="web_font">All Categories</span>
+                            <span class="web_font">Filter</span>
                         </div>
                         <div class="card-body">
                             <h5>Category List</h5>
@@ -26,18 +26,17 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="col-md-9">
                     <div class="card-header nav_bg_color">
                         <span class="web_font">All Products</span>
                     </div>
                     <div class="row">
-                        <div class="col-md-3" v-for="product in products.data" :key="product.id">
+                        <div class="col-md-3 mt-1" v-for="(product, index) in products" :key="index">
                             <div class="card" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);">
                                 <div class="card-body">
                                     <img :src="product.image" class="image"/>
                                     <hr/>
-                                    <h5 class="card-title">{{ product.name }}</h5>
+                                    <h5 class="card-title">{{ product.name.substr(0, 20) }}</h5>
                                     <span class="card-title" v-if="product.brand !== undefined">{{ product.brand.name }}</span>
                                     <span class="badge badge-warning float-right" style="margin-top: 5px;">{{ product.price }} BDT</span>
 
@@ -57,7 +56,16 @@
                             </div>
                         </div>
                     </div>
-                    <pagination :data="products" @pagination-change-page="getProduct"></pagination>
+                    <div class="col-md-12" style="height: 100px;">
+                        <div class="row">
+                            <div class="col-md-4"></div>
+                            <div class="col-md-4">
+<!--                                <pagination :data="products" @pagination-change-page="getProduct" style="margin-top: 30px; margin-left: 60px;"></pagination>-->
+                                <button class="btn btn-primary btn-lg" :disabled="!next_page_url" @click.prevent="loadMore(next_page_url)" style="margin-top: 30px; margin-left: 100px;">Load more</button>
+                            </div>
+                            <div class="col-md-4"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -68,12 +76,13 @@
     export default {
         data() {
             return {
+                products: [],
                 categories: [],
                 brands: [],
-                products: {},
                 brandIds: [],
                 categoryIds: [],
                 query: '',
+                next_page_url: null
             }
         },
         mounted() {
@@ -84,8 +93,34 @@
         },
 
         methods: {
+            getProduct(){
+                axios.get('api/get/product')
+                    .then(response => {
+                        //console.log(response)
+                        this.products = response.data.data
+                        this.next_page_url = response.data.next_page_url
+                    })
+                    .catch(error => {
+                        console.log(error)
+                    })
+            },
+            loadMore(url){
+                //console.log(url)
+                axios.get(url)
+                    .then(response => {
+                        //console.log(response.data.next_page_url)
+                        let products = response.data.data
+                        products.map(p => {
+                            this.products.push(p)
+                        })
+                        this.next_page_url = response.data.next_page_url
+                    })
+                    .catch(error => {
+                        console.log(error)
+                    })
+            },
             getFilterCategoryProduct(){
-                axios.post('/getCategoryFilterProduct', {category_ids:this.categoryIds, brand_ids: this.brandIds} )
+                axios.post('api/getCategoryFilterProduct', {category_ids:this.categoryIds, brand_ids: this.brandIds} )
                     .then(response => {
                         if(this.categoryIds.length > 0 || this.brandIds.length > 0){
                             this.products = response.data
@@ -98,8 +133,9 @@
                     })
             },
             getCategory(){
-                axios.get('/get/category')
+                axios.get('api/categories')
                     .then(response => {
+                        //console.log(response)
                         this.categories = response.data
                     })
                     .catch(error => {
@@ -108,19 +144,9 @@
             },
 
             getBrands(){
-                axios.get('/get/brand')
+                axios.get('api/get/brand')
                     .then(response => {
                         this.brands = response.data
-                    })
-                    .catch(error => {
-                        console.log(error)
-                    })
-            },
-
-            getProduct(page = 1){
-                axios.get('/get/product?page=' + page)
-                    .then(response => {
-                        this.products = response.data
                     })
                     .catch(error => {
                         console.log(error)
@@ -131,7 +157,7 @@
 </script>
 <style scoped>
     .image{
-        height: 190px;
+        height: 150px;
         width: 180px;
         object-fit: cover;
     }

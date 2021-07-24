@@ -14,6 +14,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+//Route::middleware('auth:api')->get('/user', function (Request $request) {
+//    return $request->user();
+//});
+
+Route::post('/getCategoryFilterProduct', 'CategoryController@getCategoryProducts');
+Route::get('/categories', 'CategoryController@getCategory');
+Route::get('/filter/product/get/{id}', 'CategoryController@filtaringProduct');
+
+Route::get('/get/product', 'ProductController@getProducts');
+Route::get('/get/search/product', 'ProductController@getSearchProducts');
+Route::get('/category/products/list/{id}', 'ProductController@getCategoryProductsById');
+
+Route::get('/get/brand', 'BrandController@getBrands');
+
+//any path route
+Route::get('{any?}', function () {
+    return view('welcome');
+})->where('any','.*');
